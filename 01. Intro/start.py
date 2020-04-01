@@ -46,13 +46,37 @@ import random
 # rnd = random.randrange(-20, 10)
 # print(rnd)
 
-exit = False
+# exit = False
 
-while not exit:
-    choice = int(input("1. Add\n2. Div\n0. Exit\n==> "))
-    if choice == 1:
-        print("a + b")
-    elif choice == 2:
-        print("a / b")
-    elif choice == 0:
-        exit = True
+# while not exit:
+#     choice = int(input("1. Add\n2. Div\n0. Exit\n==> "))
+#     if choice == 1:
+#         print("a + b")
+#     elif choice == 2:
+#         print("a / b")
+#     elif choice == 0:
+#         exit = True
+
+# i = 0
+# counter = 0
+
+# while i < 7:
+#     i += 1
+#     temp = random.randint(-10, 30)
+#     if temp > 10:
+#         counter += 1
+#     print(temp)
+
+
+# print("More then 10 =>", counter)
+
+number = 8
+counter = 0
+
+for i in range(1, number):
+    temp = random.randint(-10, 30)
+    if temp > 10:
+        counter += 1
+    print(temp)
+
+print("More then 10 =>", counter)
