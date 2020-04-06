@@ -1,3 +1,5 @@
+import copy
+import random
 # def sum():
 #     print("function sum")
 
@@ -123,3 +125,77 @@
 # person.sort()
 # for i in person:
 #     print(i)
+
+# numbers = []
+# for i in range(30):
+#     numbers.append(random.randint(-20, 30))
+#     if numbers[i] < 0:
+#         numbers[i] = -numbers[i]
+#     print(numbers)
+
+
+# lang = ["C++", "Python", "java Script", "C#", "Java", "PHP", "HTML", "CSS"]
+
+# prog = lang
+# print(prog)
+# prog[0] = "Kotlin"
+# print("Prog => ", prog)
+# print("lang => ", lang)
+
+# prog = copy.deepcopy(lang)
+# prog[0] = "Kotlin"
+# print("Prog => ", prog)
+# print("lang => ", lang)
+
+# part = lang[2:8:2]
+# part = lang[:4]
+# print(part)
+
+
+# car = ("Bmw", "Renault", "VW", "Audi")
+# print(car)
+
+# for i in car:
+#     print(i)
+
+# print(car[-1])
+
+# print(len(car))
+# print("Audi count ", car.count("Audi"))
+
+# i = 0
+# while i < len(car):
+#     print(car[i])
+#     i += 1
+
+# person = ("Bill", 34)
+
+# name, age = person
+# print("Name : ", name, "\nAge: ", age)
+
+countries = {
+    "UA": "Ukraine",
+    "US": "USA",
+    "BR": "Brasil"
+}
+
+for key, value in countries.items():
+    print(key, "====", value)
+
+countries.pop("BR")
+print("==============After=================")
+
+for key, value in countries.items():
+    print(key, "====", value)
+
+# for key in countries.keys():
+#     print(key)
+
+# for value in countries.values():
+#     print(value)
+
+# print(countries["UA"])
+print(countries.get("US"))
+countries["IT"] = "Italy"
+for key, value in countries.items():
+    print(key, "====", value)
