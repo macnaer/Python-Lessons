@@ -70,13 +70,13 @@ import random
 
 # print("More then 10 =>", counter)
 
-number = 8
-counter = 0
+# number = 8
+# counter = 0
 
-for i in range(1, number):
-    temp = random.randint(-10, 30)
-    if temp > 10:
-        counter += 1
-    print(temp)
+# for i in range(1, number):
+#     temp = random.randint(-10, 30)
+#     if temp > 10:
+#         counter += 1
+#     print(temp)
 
-print("More then 10 =>", counter)
+# print("More then 10 =>", counter)
