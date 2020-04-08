@@ -173,29 +173,29 @@ import random
 # name, age = person
 # print("Name : ", name, "\nAge: ", age)
 
-countries = {
-    "UA": "Ukraine",
-    "US": "USA",
-    "BR": "Brasil"
-}
+# countries = {
+#     "UA": "Ukraine",
+#     "US": "USA",
+#     "BR": "Brasil"
+# }
 
-for key, value in countries.items():
-    print(key, "====", value)
+# for key, value in countries.items():
+#     print(key, "====", value)
 
-countries.pop("BR")
-print("==============After=================")
+# countries.pop("BR")
+# print("==============After=================")
 
-for key, value in countries.items():
-    print(key, "====", value)
+# for key, value in countries.items():
+#     print(key, "====", value)
 
-# for key in countries.keys():
-#     print(key)
+# # for key in countries.keys():
+# #     print(key)
 
-# for value in countries.values():
-#     print(value)
+# # for value in countries.values():
+# #     print(value)
 
-# print(countries["UA"])
-print(countries.get("US"))
-countries["IT"] = "Italy"
-for key, value in countries.items():
-    print(key, "====", value)
+# # print(countries["UA"])
+# print(countries.get("US"))
+# countries["IT"] = "Italy"
+# for key, value in countries.items():
+#     print(key, "====", value)
