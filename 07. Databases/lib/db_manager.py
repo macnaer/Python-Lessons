@@ -21,9 +21,10 @@ class db_manager:
         exit = False
         while not exit:
             choice = int(input(
-                "1. Register\n2. Login\n3. Edit\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>>"))
+                "1. Register\n2. Login\n3. Edit\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
             if choice == 1:
-                print("Register")
+                answer = self.__register()
+                print(answer)
             elif choice == 2:
                 print("Login")
             elif choice == 0:
@@ -31,3 +32,24 @@ class db_manager:
                 print("Bye!")
             else:
                 print("Wrong choise")
+
+    def __register(self):
+        username = input("Enter username: ")
+        email = input("Enter email: ")
+        password = input("Enter password: ")
+        re_password = input("Retype password: ")
+
+        if password != re_password:
+            return "Password dont match"
+
+        self.__cursor.execute(
+            "SELECT * FROM users WHERE username='" + username + "'")
+        result = self.__cursor.fetchone()
+        if result != None:
+            return "User exists"
+        else:
+            sql = "INSERT INTO users (username, email, password) VALUES (%s, %s,%s)"
+            val = (username, email, password)
+            self.__cursor.execute(sql, val)
+            self.__db.commit()
+            return "User created"
