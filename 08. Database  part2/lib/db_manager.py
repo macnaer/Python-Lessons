@@ -28,7 +28,7 @@ class db_manager:
                 "1. Update data\n2. Login\n3. Edit\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
             if choice == 1:
                 answer = self.__update_covid_data()
-                print(answer)
+                # print(answer)
             elif choice == 2:
                 print("Login")
             elif choice == 0:
@@ -40,7 +40,12 @@ class db_manager:
     def __update_covid_data(self):
         covid_data = requests.get(COVID19_URL)
         covid_data = covid_data.json()
-        return covid_data
+        print(covid_data['Global']["NewConfirmed"], " ",
+              covid_data['Global']["TotalConfirmed"], " ", covid_data['Global']["NewDeaths"], " ", covid_data['Global']["TotalDeaths"], " ", covid_data['Global']["NewRecovered"], " ", covid_data['Global']["TotalRecovered"])
+        # print(covid_data['Countries'])
+        for item in covid_data['Countries']:
+            print(item["Country"], " ", item["CountryCode"], " ", item["Slug"],
+                  " ", item["NewConfirmed"], " ", item["TotalConfirmed"], " ", item["NewDeaths"], " ", item["TotalDeaths"], " ", item["NewRecovered"], " ", item["TotalRecovered"], " ", item["Date"])
 
     def __register(self):
         username = input("Enter username: ")
