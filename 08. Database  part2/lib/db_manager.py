@@ -25,12 +25,16 @@ class db_manager:
         exit = False
         while not exit:
             choice = int(input(
-                "1. Update data\n2. Login\n3. Edit\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
+                "1. Update data\n2. Serach by country\n3. Serach by country code\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
             if choice == 1:
                 answer = self.__update_covid_data()
                 print(answer)
             elif choice == 2:
-                print("Login")
+                answer = self.__search_by_countries()
+                print(answer)
+            elif choice == 3:
+                answer = self.__search_by_country_code()
+                print(answer)
             elif choice == 0:
                 exit = True
                 print("Bye!")
@@ -44,7 +48,7 @@ class db_manager:
         value = (covid_data['Global']["NewConfirmed"], covid_data['Global']["TotalConfirmed"], covid_data['Global']["NewDeaths"],
                  covid_data['Global']["TotalDeaths"], covid_data['Global']["NewRecovered"], covid_data['Global']["TotalRecovered"])
         self.__cursor.execute(sql, value)
-        # self.__db.commit()
+
         self.__cursor.execute("TRUNCATE TABLE countries")
         for item in covid_data['Countries']:
             sql = "INSERT into countries(Country, CountryCode, Slug, NewConfirmed, TotalConfirmed, NewDeaths, TotalDeaths, NewRecovered, TotalRecovered, Date) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -55,23 +59,22 @@ class db_manager:
         self.__db.commit()
         return "Database updated!"
 
-    def __register(self):
-        username = input("Enter username: ")
-        email = input("Enter email: ")
-        password = input("Enter password: ")
-        re_password = input("Retype password: ")
-
-        if password != re_password:
-            return "Password dont match"
-
+    def __search_by_countries(self):
+        country = input("Enter country: ")
         self.__cursor.execute(
-            "SELECT * FROM users WHERE username='" + username + "'")
+            "SELECT * FROM countries WHERE Country='" + country + "'")
         result = self.__cursor.fetchone()
-        if result != None:
-            return "User exists"
+        if result == None:
+            return ("Country " + country + " not found")
         else:
-            sql = "INSERT INTO users (username, email, password) VALUES (%s, %s,%s)"
-            val = (username, email, password)
-            self.__cursor.execute(sql, val)
-            self.__db.commit()
-            return "User created"
+            return result
+
+    def __search_by_country_code(self):
+        country = input("Enter country code: ").upper()
+        self.__cursor.execute(
+            "SELECT * FROM countries WHERE CountryCode='" + country + "'")
+        result = self.__cursor.fetchone()
+        if result == None:
+            return ("Country code " + country + " not found")
+        else:
+            return result
