@@ -25,7 +25,7 @@ class db_manager:
         exit = False
         while not exit:
             choice = int(input(
-                "1. Update data\n2. Serach by country\n3. Serach by country code\n4. Delete\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
+                "1. Update data\n2. Serach by country\n3. Serach by country code\n4. Top 10 total confirmed0\n5. Show all users\n6. Search by username\n7. Search by email\n0. Exit\n====>> "))
             if choice == 1:
                 answer = self.__update_covid_data()
                 print(answer)
